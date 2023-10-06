@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: natemacfadden/community@master
+        uses: natemacfadden/community
       - name: Run GitHub File Sync
-        uses: natemacfadden/core@master
+        uses: natemacfadden/core
         with:
           GH_PAT: ${{ secrets.REPO_SYNC_TOKEN }}
