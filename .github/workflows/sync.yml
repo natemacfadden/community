@@ -1,20 +1,16 @@
-name: Repository Sync
-
+name: Sync Files
 on:
-  schedule:
-  - cron:  "*/15 * * * *"
+  push:
+    branches:
+      - master
   workflow_dispatch:
-
 jobs:
-  repo-sync:
+  sync:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        persist-credentials: false
-    - name: repo-sync
-      uses: repo-sync/github-sync@v2
-      with:
-        source_repo: "natemacfadden/community"
-        dest_repo: "natemacfadden/core"
-        github_token: ${{ secrets.REPO_SYNC_TOKEN }}
+      - name: Checkout Repository
+        uses: natemacfadden/community@master
+      - name: Run GitHub File Sync
+        uses: natemacfadden/core@master
+        with:
+          GH_PAT: ${{ secrets.REPO_SYNC_TOKEN }}
