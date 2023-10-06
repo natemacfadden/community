@@ -1,5 +1,3 @@
 natemacfadden/core@main:
-  - source: .github/workflows/
-    dest: .github/workflows/
   - source: src/
     dest: src/
